@@ -1,0 +1,21 @@
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+
+  .score {
+    display: flex;
+    border: 1px solid black;
+    border-top: 0px;
+    justify-content: space-between;
+
+    padding: 3px;
+
+    &:first-child {
+      border-top: 1px solid black;
+    }
+
+    .name {
+      margin-right: 30px;
+    }
+  }
+}

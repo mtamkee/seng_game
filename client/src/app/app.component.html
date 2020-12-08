@@ -1,0 +1,12 @@
+<div class="app-component">
+  <app-lobby *ngIf="isLobbyStage()"></app-lobby>
+  <game *ngIf="isGameStage()"></game>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-98672458-3');
+  </script>
+</div>

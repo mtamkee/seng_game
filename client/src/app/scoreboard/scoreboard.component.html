@@ -1,0 +1,11 @@
+<div class="scoreboard">
+  <div class="score"
+       *ngFor="let score of (getScores() | async)">
+     <div class="name">
+      {{score[0]}}
+     </div>
+     <div class="points">
+      {{score[1]}}
+     </div>
+  </div>
+</div>

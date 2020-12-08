@@ -1,0 +1,63 @@
+<div class="lobby-component" >
+  
+  <div class="title"> 
+    What Do You Meme 
+  </div>
+
+  <div class="main-box">
+    <div class="pre-room" *ngIf="!isInRoom()">
+      
+      <div class="create-name">
+        <input [(ngModel)]="nameInput" 
+               name="nameInput" 
+               class="create-name-input" 
+               placeholder="Name"
+               (ngModelChange)="updateNameFieldIsEmpty()"
+               [class.invalid-input]="getInvalidName() | async">
+      </div>
+
+      <div class="create-room" 
+           (click)="createRoom()"
+           [class.unclickable]="getNameFieldIsEmpty() | async">
+        Create Room
+      </div>
+      
+      <div class="join-room">
+        <form (submit)="joinRoom()" class="join-room-form">
+          <input [(ngModel)]="roomNameInput" 
+                 name="roomNameInput" 
+                 class="join-room-input"
+                 placeholder="Room Code"
+                 [attr.disabled]="(getNameFieldIsEmpty() | async) ? '' : null"
+                 [class.invalid-input]="getInvalidRoomName() | async">
+        </form>
+        <div class="join-room-button"  
+             (click)="joinRoom()"
+             [class.unclickable]="getNameFieldIsEmpty() | async">
+          Join Room
+        </div>
+      </div>
+
+    </div>
+
+    <div class="in-room" *ngIf="isInRoom()">
+      <div class="current-room">
+        Welcome to room {{getRoomName() | uppercase}}, {{getMyName()}}!
+      </div>
+
+      Players in this room:
+      <div class="player-names">
+        <div class="player-name"
+             *ngFor="let name of (getPlayerNames() | async)">
+             {{name}}
+        </div>
+      </div>
+
+      <div class="start-game" (click)="startGame()" *ngIf="createdRoom() && isInRoom()">
+        Start Game
+      </div>
+    </div>
+    
+  </div>
+
+</div>

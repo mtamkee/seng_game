@@ -1,0 +1,187 @@
+@card-width: 11vw;
+@card-height: 26vh;
+@card-font: 1vw;
+@card-padding: 0.3vw;
+
+@big-font: 1.3 * @card-font;
+
+.card() {
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: @card-font;
+  height: @card-height;
+  width: @card-width;
+  max-height: @card-width * 1.5;
+  max-width: @card-height * 1.5;
+  box-sizing: border-box;
+  padding: @card-padding;
+  word-wrap: break-word;
+}
+
+.game-component {
+  width: 100%;
+
+  .top-row {
+    display: flex;
+    justify-content: flex-start;
+    height: 600px;
+    width: 100%;
+    overflow: auto;
+
+    .main-stage {
+      overflow: hidden;
+
+      .white-card-selections {
+        width: @card-width;
+        border: 1px solid black;
+        display: flex;
+        height: @card-height;
+        max-height: @card-width * 1.5;
+        align-items: center;
+        border-radius: 5px;
+
+        &.two {
+          width: @card-width * 2;
+        }
+
+        &.three {
+          width: @card-width * 3;
+        }
+
+        &.four {
+          width: @card-width * 4;
+        }
+
+        &.five {
+          width: @card-width * 5;
+        }
+
+        .white-card-selection {
+          cursor: grab;
+        }
+
+        .guidance-text {
+          display: none;
+          font-style: Roboto;
+          font-size: @big-font;
+          width: 100%;
+          text-align: center;
+        }
+
+        .guidance-text:only-child {
+          display: block;
+        }
+      }
+
+      .white-card-submissions {
+        display: flex;
+        height: 100%;
+        .player-submissions {
+          display: flex;
+          flex-direction: column;
+          max-height: @card-height * 2;
+          height: 100%;
+
+          .card {
+            min-height: 0;
+          }
+
+          &.interactable {
+            cursor: pointer;
+            &:hover {
+              .card {
+                box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+              }
+            }
+          }
+        }
+      }
+
+      *.hidden {
+        display: none;
+      }
+
+      .submitter-name {
+        font-size: @card-font;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .bottom-row {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    align-items: flex-end;
+    width: 90%;
+
+    .hand-container {
+      display: flex;
+      pointer-events: none;
+      justify-content: space-between;
+      width: 100%;
+
+      &.can-drag {
+        pointer-events: all;
+        cursor: grab;
+      }
+    }
+
+    .submit {
+      border: 1px solid black;
+      padding: 30px;
+      cursor: pointer;
+    }
+  }
+
+  .card {
+    .card();
+
+    &.black {
+      color: white;
+      background-color: black;
+      margin-right: 10px;
+    }
+
+    &.white {
+      color: black;
+      background-color: white;
+    }
+  }
+
+  .scoreboard {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+
+
+.cdk-drag {
+  transition: transform 100ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-animating {
+  transition: transform 100ms cubic-bezier(0, 0, 0.2, 1); 
+}
+
+.cdk-drag-preview {
+  .card();
+  color: black;
+  background-color: white;
+  cursor: grab;
+}
+
+.custom-placeholder {
+  .card();
+  border: 3px dashed #666666;
+  background: #cccccc;
+}
+
+.white-card-selections.cdk-drop-list-dragging .white-card-selection:not(.cdk-drag-placeholder) {
+  transition: transform 100ms cubic-bezier(0, 0, 0.2, 1);
+}

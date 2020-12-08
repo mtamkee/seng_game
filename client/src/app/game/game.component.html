@@ -1,0 +1,79 @@
+<div class="game-component">
+  <div class="top-row">
+    <div class="card black">
+      {{getCurrentBlackCardText() | async}}
+    </div>
+
+    <div class="main-stage">
+
+      <div class="white-card-selections-container"
+           [class.hidden]="!(isStageNumber(0))">
+        <div class="white-card-selections"
+             [ngClass]="getSelectionBoxLength() | async"
+             cdkDropList
+             #selections="cdkDropList"
+             [cdkDropListData]="getSelectedCards() | async"
+             [cdkDropListConnectedTo]="[hand]"
+             (cdkDropListDropped)="drop($event)"
+             id="selections"
+             cdkDropListOrientation="horizontal">
+           <div class="white-card-selection card white"
+                *ngFor="let card of (getSelectedCards() | async)"
+                cdkDrag>
+              <div class="custom-placeholder" *cdkDragPlaceholder></div>
+              {{card.text}}
+           </div>
+           
+           <div class="guidance-text">
+            {{getGuidanceText() | async}}
+           </div>
+        </div>
+      </div>
+
+      <div class="submitter-name">
+        {{getWinnerName() | async}}
+      </div>
+
+      <div class="white-card-submissions"
+           [class.hidden]="!(isStageNumber(1))">
+        <div class="player-submissions"
+             [class.interactable]="isMyTurnObservable() | async"
+             *ngFor="let playerSubmission of (getWhiteCardSubmissions() | async); index as i"
+             (click)="selectSubmission(i)">
+            <div class="card white submitted"
+                *ngFor="let card of playerSubmission">
+              {{card.text}}
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="bottom-row">
+    <div class="hand-container"
+         [class.can-drag]="getCanSelectMoreCards() | async"
+         cdkDropList
+         #hand="cdkDropList"
+         [cdkDropListData]="getHand() | async"
+         [cdkDropListConnectedTo]="[selections]"
+         (cdkDropListDropped)="drop($event)"
+         cdkDropListOrientation="horizontal">
+      <div class="card white" 
+          *ngFor="let card of getHand() | async; index as i"
+          cdkDrag>
+        <div class="custom-placeholder" *cdkDragPlaceholder></div>
+        {{card.text}}
+      </div>
+    </div>
+
+    <div class="submit" 
+        (click)="sendSelectedWhiteCard()"
+        *ngIf="!(isMyTurnObservable() | async) && !(getThisTurnSubmitted() | async)">
+        Submit
+    </div>
+  </div>
+
+  <scoreboard class="scoreboard"></scoreboard>
+</div>
