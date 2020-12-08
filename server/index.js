@@ -3,7 +3,7 @@ const roomManager = require('./src/rooms.js');
 const gameController = require('./src/gameController.js');
 
 // nodeConstants.app.use(nodeConstants.serve('../client/public_html'));
-nodeConstants.app.use(nodeConstants.serve('../client/dist/cah/'));
+nodeConstants.app.use(nodeConstants.serve('../client/dist/meme/'));
 
 nodeConstants.io.on('connection', function(socket) {
 

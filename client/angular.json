@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cah": {
+    "meme": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cah",
+            "outputPath": "dist/meme",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cah:build"
+            "browserTarget": "meme:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cah:build:production"
+              "browserTarget": "meme:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cah:build"
+            "browserTarget": "meme:build"
           }
         },
         "test": {
@@ -106,7 +106,7 @@
         }
       }
     },
-    "cah-e2e": {
+    "meme-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +115,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "cah:serve"
+            "devServerTarget": "meme:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cah:serve:production"
+              "devServerTarget": "meme:serve:production"
             }
           }
         },
@@ -135,5 +135,5 @@
       }
     }
   },
-  "defaultProject": "cah"
+  "defaultProject": "meme"
 }
