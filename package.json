@@ -1,0 +1,40 @@
+{
+  "name": "not-cards-against-humanity",
+  "version": "1.0.0",
+  "description": "A (completely unlicensed but probably legal) clone of Cards Against Humanity!",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && node index.js",
+    "postinstall": "cd client && ng build --aot --prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "11.x",
+    "npm": "6.4.x"
+  },
+  "dependencies": {
+    "@angular/animations": "~7.0.0",
+    "@angular/cdk": "^7.0.4",
+    "@angular/common": "~7.0.0",
+    "@angular/compiler": "~7.0.0",
+    "@angular/core": "~7.0.0",
+    "@angular/cli": "~7.0.4",
+    "@angular/compiler-cli": "~7.0.0",
+    "@angular/forms": "~7.0.0",
+    "@angular/http": "~7.0.0",
+    "@angular/platform-browser": "~7.0.0",
+    "@angular/platform-browser-dynamic": "~7.0.0",
+    "@angular/router": "~7.0.0",
+    "@types/socket.io-client": "^1.4.32",
+    "@angular-devkit/build-angular": "~0.10.0",
+    "@angular/language-service": "~7.0.0",
+    "core-js": "^2.5.4",
+    "rxjs": "~6.3.3",
+    "socket.io": "^2.1.1",
+    "zone.js": "~0.8.26",
+    "typescript": "~3.1.1",
+    "koa": "^2.5.3",
+    "koa-static": "^5.0.0"
+  }
+}
